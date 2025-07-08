@@ -76,6 +76,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.0.0
         version: 2.0.0
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
       '@types/cors':
         specifier: ^2.8.19
         version: 2.8.19
