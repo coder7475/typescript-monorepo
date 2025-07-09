@@ -1,6 +1,8 @@
 {
-  "name": "express-ts-docker-template",
+  "name": "express",
   "version": "1.0.0",
+  "type": "module",
+  "private": "true",
   "description": "An express starter with typescript",
   "author": "Robiul Hossain",
   "licence": "MIT",
