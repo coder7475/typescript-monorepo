@@ -20,6 +20,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@repo/math':
+        specifier: workspace:*
+        version: link:../../packages/math
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -135,6 +138,15 @@ importers:
         version: 8.34.0(eslint@9.29.0)(typescript@5.8.2)
 
   configs/typescript-config: {}
+
+  packages/math:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      typescript:
+        specifier: latest
+        version: 5.8.3
 
   packages/ui:
     dependencies:
@@ -2814,6 +2826,11 @@ packages:
   typescript@5.8.2:
     resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
     engines: {node: '>=14.17'}
+
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
 
   ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
@@ -5854,6 +5871,8 @@ snapshots:
       - supports-color
 
   typescript@5.8.2: {}
+
+  typescript@5.8.3: {}
 
   ufo@1.6.1: {}
 
