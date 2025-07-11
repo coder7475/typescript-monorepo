@@ -6,7 +6,13 @@ import indexRouter from "@/routes";
 import userRoute from "@/routes/users.routes";
 import { middlewares } from "@/middlewares";
 
+import { connectToMongoDB } from "@repo/db";
+
 const app: Express = express();
+
+connectToMongoDB(process.env.DB_URI as string).catch((err: Error) =>
+  console.error(err)
+);
 // connect to database
 /*
  * Example conncting to MongoDB using mongoose
@@ -26,6 +32,7 @@ async function connectToMongoDB() {
 connectToMongoDB().catch((err) => console.error(err));
 
  */
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
