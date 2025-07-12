@@ -3,5 +3,4 @@ packages:
   - "packages/*"
   - "configs/*"
 
-catalog:
-  "mongoose": "^8.16.3"
+
