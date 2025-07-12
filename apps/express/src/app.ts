@@ -1,17 +1,15 @@
-import express, { type Express } from "express";
-import helmet from "helmet";
-import cors from "cors";
-
+import { middlewares } from "@/middlewares";
 import indexRouter from "@/routes";
 import userRoute from "@/routes/users.routes";
-import { middlewares } from "@/middlewares";
-
 import { connectToMongoDB } from "@repo/db";
+import cors from "cors";
+import express, { type Express } from "express";
+import helmet from "helmet";
 
 const app: Express = express();
 
 connectToMongoDB(process.env.DB_URI as string).catch((err: Error) =>
-  console.error(err)
+  console.error(err),
 );
 // connect to database
 /*
