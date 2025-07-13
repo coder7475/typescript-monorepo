@@ -4,7 +4,9 @@ import { connectToMongoDB } from "@repo/db";
 import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
+import pino from "pino";
 
+export const logger = pino({ name: "Express Server" });
 const app: Express = express();
 
 // Connect to Database
