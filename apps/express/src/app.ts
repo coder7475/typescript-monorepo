@@ -17,13 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
 // Routes using indexRouter
-// root route
+app.use("/api/v1", indexRouter);
 app.use("/", (req, res) => {
 	return res.status(200).json({
 		message: "Welcome to ____ System!",
 	});
 });
-app.use("/api/v1", indexRouter);
 
 // Not found route handler
 app.use(middlewares.notFoundRoute);
