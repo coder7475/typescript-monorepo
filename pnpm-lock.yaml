@@ -110,6 +110,15 @@ importers:
         specifier: ^5.2.2
         version: 5.8.2
 
+  apps/node-framework:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      typescript:
+        specifier: ^5.2.2
+        version: 5.8.3
+
   configs/eslint-config:
     devDependencies:
       '@eslint/js':
@@ -173,9 +182,6 @@ importers:
         specifier: ^8.16.3
         version: 8.16.3(socks@2.8.4)
     devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../../configs/eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript-config
