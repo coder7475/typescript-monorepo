@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "express:dev": "pnpm run dev --filter 'express'",
-    "framework": "pnpm run dev --filer 'node-framework'"
+    "framework": "pnpm run dev --filter 'node-framework'"
   },
   "devDependencies": {
     "prettier": "^3.6.0",
