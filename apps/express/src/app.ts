@@ -20,7 +20,7 @@ app.use(helmet());
 // root route
 app.use("/", (req, res) => {
 	return res.status(200).json({
-		message: "HEllo WOrld!",
+		message: "Welcome to ____ System!",
 	});
 });
 app.use("/api/v1", indexRouter);
