@@ -1,9 +1,18 @@
-import { Router, type Request, type Response } from "express";
+import { Router } from "express";
+
+import userRoutes from "./users.routes";
 
 const indexRouter: Router = Router();
 
-indexRouter.get("/", (_req: Request, res: Response) => {
-  res.send("Hello from Express + TypeScript!");
+const moduleRoutes = [
+	{
+		path: "user",
+		routes: userRoutes,
+	},
+];
+
+moduleRoutes.forEach((route) => {
+	indexRouter.use(route.path, route.routes);
 });
 
 export default indexRouter;

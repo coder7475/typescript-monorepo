@@ -1,12 +1,14 @@
-import { Router, type Request, type Response } from "express";
+import type { Request, Response } from "express";
+import { Router } from "express";
 
-const userRoute: Router = Router();
+const userRoutes: Router = Router();
 
-userRoute.get("/", (_req: Request, res: Response) => {
-  res.json({
-    status: 200,
-    message: "This is users route",
-  });
+//** root:  api/v1/user
+userRoutes.get("/register", (_req: Request, res: Response) => {
+	res.json({
+		status: 200,
+		message: "This is user register route",
+	});
 });
 
-export default userRoute;
+export default userRoutes;
