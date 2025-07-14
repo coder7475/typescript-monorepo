@@ -1,6 +1,6 @@
 import { middlewares } from "@/middlewares";
 import indexRouter from "@/routes";
-import { connectToMongoDB } from "@repo/db";
+import { connectToMongoDB } from "@repo/db/src/mongoDriver";
 import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
@@ -20,7 +20,7 @@ app.use(helmet());
 
 // Routes using indexRouter
 app.use("/api/v1", indexRouter);
-app.use("/", (req, res) => {
+app.use("/", (_req, res) => {
 	return res.status(200).json({
 		message: "Welcome to ____ System!",
 	});
