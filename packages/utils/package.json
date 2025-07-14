@@ -1,5 +1,5 @@
 {
-  "name": "@repo/db",
+  "name": "@repo/utils",
   "version": "0.1.0",
   "author": "Robiul Hossain",
   "type": "module",
@@ -15,9 +15,7 @@
     "build": "tsc",
     "clean": "rm -rf dist"
   },
-  "dependencies": {
-    "mongoose": "^8.16.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
