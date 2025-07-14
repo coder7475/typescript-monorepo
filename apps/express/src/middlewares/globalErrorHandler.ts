@@ -13,6 +13,8 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req: Request, res: Respon
 	if (err instanceof AppError) {
 		statusCode = err.statusCode;
 		message = err.message;
+	} else if (err instanceof Error) {
+		message = err.message;
 	}
 
 	res.status(statusCode).json({
