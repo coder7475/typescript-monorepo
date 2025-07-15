@@ -17,5 +17,3 @@ export class Framework {
 }
 
 export const createApp = () => new Framework();
-
-export * from "./server.js";

@@ -1,18 +1,9 @@
-import { Server } from "@repo/framework/server";
+import { createApp } from "@repo/framework";
 
-const server = new Server();
-
-// events
-server.on("request:received", () => {
-  console.log("Request Received!");
-});
-
-server.on("request:processed", () => {
-  console.log("Request Processed!");
-});
+const app = createApp();
 
 // listener
 const port = 5555;
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is Running on port http://localhost:${port}!`);
 });
