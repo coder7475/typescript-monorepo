@@ -27,4 +27,8 @@ export interface Response {
   setHeader(key: string, value: string): this;
   send(body?: string | Object | Buffer | null): this;
   json(body: Object): this;
+  // TODO - Add more methods here
 }
+
+// contracts for handlers
+export type Handler = (req: Request, res: Response) => void | Promise<void>;
