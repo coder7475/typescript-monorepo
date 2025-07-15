@@ -12,8 +12,13 @@
     "./subtract": {
       "types": "./src/subtract.ts",
       "default": "./dist/subtract.js"
+    },
+    "./mongoConnector": {
+      "types": "./src/mongoConnector.ts",
+      "default": "./dist/mongoConnector.js"
     }
   },
+  "dependencies": {},
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "typescript": "latest"

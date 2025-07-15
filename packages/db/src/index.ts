@@ -6,7 +6,7 @@ let isConnected = false;
  * Connect to MongoDB using Mongoose.
  * @param uri MongoDB connection string
  */
-export async function connectToMongoDB(uri: string) {
+export async function mongoConnector(uri: string) {
   if (isConnected) {
     console.log("=> Using existing database connection");
     return;

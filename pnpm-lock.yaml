@@ -199,6 +199,10 @@ importers:
         version: 5.8.3
 
   packages/math:
+    dependencies:
+      mongoose:
+        specifier: ^8.16.3
+        version: 8.16.3(socks@2.8.4)
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*

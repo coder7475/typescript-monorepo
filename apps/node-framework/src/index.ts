@@ -6,10 +6,16 @@ const requestListener = (req: IncomingMessage, res: ServerResponse) => {
 
   console.log(`${method} ${path}`);
 
+  const response: Record<string, any> = {};
+
+  if (path?.startsWith("api/v1")) {
+    response.statusCode = 200;
+  }
+
   res.writeHead(200, {
-    "Content-Type": "text/plain",
+    "Content-Type": "Application/json",
   });
-  res.write("Hello Node Server!");
+  res.write(JSON.stringify(response));
   res.end();
 };
 
