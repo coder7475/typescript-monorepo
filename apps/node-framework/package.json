@@ -4,13 +4,15 @@
   "type": "module",
   "private": "true",
   "description": "Create a custom web app framework without any npm package using typescript",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@repo/framework": "workspace:*",
     "@types/node": "^20.4.2",
     "typescript": "^5.2.2",
     "tsx": "^4.20.2"

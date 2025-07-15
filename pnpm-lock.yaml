@@ -112,6 +112,9 @@ importers:
 
   apps/node-framework:
     devDependencies:
+      '@repo/framework':
+        specifier: workspace:*
+        version: link:../../packages/framework
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../configs/typescript-config

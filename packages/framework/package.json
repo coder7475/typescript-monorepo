@@ -1,11 +1,8 @@
 {
   "name": "@repo/framework",
   "type": "module",
+  "main": "index.js",
   "exports": {
-    "./types": {
-      "types": "./src/types.ts",
-      "default": "./dist/types.js"
-    },
     "./server": {
       "types": "./src/server.ts",
       "default": "./dist/server.js"
