@@ -9,6 +9,10 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./dist/index.js"
+    },
+    "./add": {
+      "types": "./src/add.ts",
+      "default": "./dist/add.js"
     }
   },
   "scripts": {

@@ -1,5 +1,6 @@
 import { middlewares } from "@/middlewares";
 import indexRouter from "@/routes";
+import { mongoConnector } from "@repo/db";
 import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
