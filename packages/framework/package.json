@@ -1,0 +1,21 @@
+{
+  "name": "@repo/framework",
+  "type": "module",
+  "exports": {
+    "./types": {
+      "types": "./src/types.ts",
+      "default": "./dist/types.js"
+    }
+  },
+  "dependencies": {},
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.4.2",
+    "typescript": "^5.2.2",
+    "tsx": "^4.20.2"
+  }
+}
