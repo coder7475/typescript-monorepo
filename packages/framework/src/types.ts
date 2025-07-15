@@ -1,4 +1,4 @@
-import { IncomingMessage } from "node:http";
+import { IncomingMessage, ServerResponse } from "node:http";
 
 /**
  * ? Methods: get, post, put, patch, delete
@@ -15,4 +15,16 @@ export interface Request {
   query: Record<string, string>;
   params: Record<string, string>;
   body: string | Object | null;
+}
+
+// contract for response
+export interface Response {
+  nodeRes: ServerResponse;
+  statusCode: number;
+  headers: Record<string, string>;
+  // methods
+  status(code: number): this;
+  setHeader(key: string, value: string): this;
+  send(body?: string | Object | Buffer | null): this;
+  json(body: Object): this;
 }
