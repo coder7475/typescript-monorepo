@@ -1,6 +1,8 @@
 import EventEmitter from "node:events";
 import { createServer, IncomingMessage, ServerResponse } from "node:http";
 
+import { RequestImp } from "./Request.js";
+
 // Event Driven Server
 export class Server extends EventEmitter {
   private server: ReturnType<typeof createServer>;
@@ -16,12 +18,17 @@ export class Server extends EventEmitter {
     this.server.listen(port, cb);
   }
 
-  private handleRequest(nodeReq: IncomingMessage, nodeRes: ServerResponse) {
+  private async handleRequest(
+    nodeReq: IncomingMessage,
+    nodeRes: ServerResponse,
+  ) {
     this.emit("request:received");
 
     // * Step 1: Process the request and response and create our own req, res object
+    const request = new RequestImp(nodeReq);
 
     // * Step 2: Parse the body
+    await request.parseBody();
 
     // * Step 3: Match the Route
 

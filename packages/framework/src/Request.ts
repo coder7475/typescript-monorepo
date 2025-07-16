@@ -3,7 +3,7 @@ import { parse } from "node:url";
 
 import { Method, Request } from "./types.js";
 
-class RequestImp implements Request {
+export class RequestImp implements Request {
   nodeReq: IncomingMessage;
   method: Method;
   headers: Record<string, string>;
