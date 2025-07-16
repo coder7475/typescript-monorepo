@@ -2,6 +2,7 @@ import EventEmitter from "node:events";
 import { createServer, IncomingMessage, ServerResponse } from "node:http";
 
 import { RequestImp } from "./Request.js";
+import { ResponseImp } from "./Response.js";
 
 // Event Driven Server
 export class Server extends EventEmitter {
@@ -26,6 +27,7 @@ export class Server extends EventEmitter {
 
     // * Step 1: Process the request and response and create our own req, res object
     const request = new RequestImp(nodeReq);
+    const response = new ResponseImp(nodeRes);
 
     // * Step 2: Parse the body
     await request.parseBody();
@@ -33,7 +35,7 @@ export class Server extends EventEmitter {
     // * Step 3: Match the Route
 
     // * Step 4: Execute the handler or Execute the middleware chain
-    const response = {
+    const body = {
       statusCode: 200,
       message: "Hello World!",
     };
@@ -41,7 +43,7 @@ export class Server extends EventEmitter {
     nodeRes.writeHead(200, {
       "Content-Type": "Application/json",
     });
-    nodeRes.write(JSON.stringify(response));
+    nodeRes.write(JSON.stringify(body));
     nodeRes.end();
 
     this.emit("request:processed");
