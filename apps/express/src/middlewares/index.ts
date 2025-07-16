@@ -1,14 +1,13 @@
-import type { ErrorRequestHandler, RequestHandler } from "express";
+import GlobalErrorHandler from "./GlobalErrorHandler";
+import NotFoundRoute from "./NotFoundRoute";
+import * as ValidateRequest from "./ValidateRequest";
 
-import globalErrorHandler from "./globalErrorHandler";
-import notFoundRoute from "./notFoundRoute";
-
-type Middlewares = {
-  globalErrorHandler: ErrorRequestHandler;
-  notFoundRoute: RequestHandler;
-};
-
-export const middlewares: Middlewares = {
-  globalErrorHandler,
-  notFoundRoute,
+export const middlewares: {
+  globalErrorHandler: typeof GlobalErrorHandler;
+  notFoundRoute: typeof NotFoundRoute;
+  validateRequest: typeof ValidateRequest;
+} = {
+  globalErrorHandler: GlobalErrorHandler,
+  notFoundRoute: NotFoundRoute,
+  validateRequest: ValidateRequest,
 };

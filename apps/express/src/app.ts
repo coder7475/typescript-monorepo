@@ -1,4 +1,3 @@
-import { middlewares } from "@/middlewares";
 import indexRouter from "@/routes";
 import { mongoConnector } from "@repo/db";
 import cors from "cors";
@@ -7,6 +6,7 @@ import helmet from "helmet";
 import pino from "pino";
 
 import { env } from "./configs/envConfig";
+import { middlewares } from "./middlewares";
 
 export const logger = pino({ name: "Express Server" });
 const app: Express = express();
