@@ -42,5 +42,6 @@ export class Server extends EventEmitter {
     // send response
     response.status(200).json(body);
     this.emit("request:processed");
+    // continue from 2:15
   }
 }
