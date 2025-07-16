@@ -7,7 +7,7 @@ import type {
   Response,
 } from "express";
 
-import AppError from "./AppError";
+import AppError from "../configs/AppError";
 
 const GlobalErrorHandler: ErrorRequestHandler = (
   err,
