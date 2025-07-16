@@ -38,7 +38,10 @@ export class ResponseImp implements Response {
     return this;
   }
   json(body: Object): this {
-    throw new Error("Not Implemented - json method");
+    this.setHeader("Content-Type", "application/json");
+    this.nodeRes.writeHead(this.statusCode, this.headers);
+    this.nodeRes.end(JSON.stringify(body));
+    return this;
   }
   // TODO - Add more methods here
 }
