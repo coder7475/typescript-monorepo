@@ -9,6 +9,10 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./dist/index.js"
+    },
+    "./hashPassword": {
+      "types": "./src/hashPassword/index.ts",
+      "default": "./dist/hashPassword/index.js"
     }
   },
   "scripts": {
@@ -17,9 +21,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "typescript": "^5.2.2"
+    "@types/node": "^20.4.2",
+    "typescript": "^5.2.2",
+    "tsx": "^4.20.2"
   },
   "eslintConfig": {
     "extends": [
