@@ -10,7 +10,10 @@ export const validateZod =
       return res.status(400).json({
         message: "Validation failed",
         success: false,
-        error: result.error.errors,
+        errors: result.error.errors.map((e) => ({
+          path: e.path.join("."),
+          message: e.message,
+        })),
       });
     }
 
