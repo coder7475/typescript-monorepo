@@ -37,15 +37,9 @@ export class Server extends EventEmitter {
     // * Step 4: Execute the handler or Execute the middleware chain
     const body = {
       statusCode: 200,
-      message: "Hello World!",
+      message: "Message from our own response handler!",
     };
-
-    nodeRes.writeHead(200, {
-      "Content-Type": "Application/json",
-    });
-    nodeRes.write(JSON.stringify(body));
-    nodeRes.end();
-
-    this.emit("request:processed");
+    // send response
+    response.status(200).json(body);
   }
 }
