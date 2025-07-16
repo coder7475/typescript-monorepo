@@ -20,7 +20,7 @@ export class Server extends EventEmitter {
 
   private async handleRequest(
     nodeReq: IncomingMessage,
-    nodeRes: ServerResponse,
+    nodeRes: ServerResponse<IncomingMessage>,
   ) {
     this.emit("request:received");
 

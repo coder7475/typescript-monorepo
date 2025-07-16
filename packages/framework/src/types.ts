@@ -19,7 +19,7 @@ export interface Request {
 
 // contract for response
 export interface Response {
-  nodeRes: ServerResponse;
+  nodeRes: ServerResponse<IncomingMessage>;
   statusCode: number;
   headers: Record<string, string>;
   // methods
