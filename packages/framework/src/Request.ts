@@ -4,7 +4,6 @@ import { parse } from "node:url";
 import { Method, Request } from "./types.js";
 
 export class RequestImp implements Request {
-  nodeReq: IncomingMessage;
   method: Method;
   headers: Record<string, string>;
   path: string; // actual path post/1234
@@ -13,8 +12,7 @@ export class RequestImp implements Request {
   params: Record<string, string> = {};
   body: string | Object | null = null;
 
-  constructor(nodeReq: IncomingMessage) {
-    this.nodeReq = nodeReq;
+  constructor(public nodeReq: IncomingMessage) {
     this.method = nodeReq.method as Method; // TODO - Type Cast Utility
     this.headers = nodeReq.headers as Record<string, string>;
 
