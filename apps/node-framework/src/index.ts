@@ -2,11 +2,11 @@ import { createApp } from "@repo/framework";
 
 const app = createApp();
 // events
-app.server.on("request:received", () => {
+app.on("request:received", () => {
   console.log("Server Request Received!");
 });
 
-app.server.on("request:processed", () => {
+app.on("request:processed", () => {
   console.log("Server Request Processed!");
 });
 // listener

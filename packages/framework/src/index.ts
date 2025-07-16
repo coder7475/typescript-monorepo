@@ -1,19 +1,19 @@
 import { Server } from "./server.js";
 
-export class Framework {
-  server: Server;
-  constructor() {
-    this.server = new Server();
-  }
+// export class Framework {
+//   server: Server;
+//   constructor() {
+//     this.server = new Server();
+//   }
 
-  // methods
-  get() {}
+//   // methods
+//   get() {}
 
-  post() {}
+//   post() {}
 
-  listen(port: number, cb?: () => void) {
-    this.server.listen(port, cb);
-  }
-}
+//   listen(port: number, cb?: () => void) {
+//     this.server.listen(port, cb);
+//   }
+// }
 
-export const createApp = () => new Framework();
+export const createApp = () => new Server();
