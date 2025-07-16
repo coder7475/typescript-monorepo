@@ -18,6 +18,24 @@ export class ResponseImp implements Response {
   }
   send(body?: string | Object | Buffer | null): this {
     if (this.nodeRes.writableEnded) return this;
+
+    if (typeof body === "object" && !(body instanceof Buffer)) {
+      this.setHeader("Content-Type", "application/json");
+      this.nodeRes.writeHead(this.statusCode, this.headers);
+      this.nodeRes.end(JSON.stringify(body));
+      return this;
+    }
+
+    if (body instanceof Buffer) {
+      this.setHeader("Content-Type", "application/octet-stream");
+      this.nodeRes.writeHead(this.statusCode, this.headers);
+      this.nodeRes.end(body);
+      return this;
+    }
+
+    this.nodeRes.writeHead(this.statusCode, this.headers);
+    this.nodeRes.end(body);
+    return this;
   }
   json(body: Object): this {
     throw new Error("Not Implemented - json method");
