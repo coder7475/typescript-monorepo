@@ -1,4 +1,4 @@
-import { DecodedUser } from "../../middlewares/CheckAuth";
+import { DecodedUser } from "@/middlewares/CheckAuth";
 
 declare global {
   namespace Express {
