@@ -42,6 +42,14 @@ export class Server extends EventEmitter {
     // send response
     response.status(200).json(body);
     this.emit("request:processed");
-    // continue from 2:15
   }
 }
+
+/*** Routes->
+ * * /home - handler A [home]
+ * * /admin/dashboard - Handler B [admin, dashboard]
+ * *  /admin/dashboard/users - Handler C [admin, dashboard, users]
+ * * /products/:id - [products, :id] - products/123 - [products, 123]
+ * * /products/:id/comments/:cid - [products, :id, comments, :cid] - products/123/comments/423 - [products, 123, comments, 423]
+ */
+// ? Route Matching DS: Radix Tree
