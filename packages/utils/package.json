@@ -13,18 +13,25 @@
     "./hashPassword": {
       "types": "./src/hashPassword/index.ts",
       "default": "./dist/hashPassword/index.js"
+    },
+    "./jwt": {
+      "types": "./src/jwt/index.ts",
+      "default": "./dist/jwt/index.js"
     }
   },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20.4.2",
-    "typescript": "^5.2.2",
-    "tsx": "^4.20.2"
+    "tsx": "^4.20.2",
+    "typescript": "^5.2.2"
   },
   "eslintConfig": {
     "extends": [
