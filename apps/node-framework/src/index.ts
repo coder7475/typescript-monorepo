@@ -1,4 +1,4 @@
-import { createApp } from "@repo/framework";
+import { createApp, router } from "@repo/framework";
 
 const app = createApp();
 // events
@@ -14,3 +14,12 @@ const port = 5555;
 app.listen(port, () => {
   console.log(`Server is Running on port http://localhost:${port}!`);
 });
+
+// add to router
+router.add("GET", "/", () => {});
+router.add("GET", "/home", () => {});
+router.add("POST", "/login", () => {});
+router.add("GET", "/admin/dashboard", () => {});
+router.add("GET", "/products/:id", () => {});
+router.add("GET", "/products/:id/comments/:cid", () => {});
+console.log(router.toString());

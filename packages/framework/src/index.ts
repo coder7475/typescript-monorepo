@@ -1,3 +1,4 @@
+import { Router } from "./Router.js";
 import { Server } from "./server.js";
 
 // export class Framework {
@@ -17,3 +18,6 @@ import { Server } from "./server.js";
 // }
 
 export const createApp = () => new Server();
+export const router = new Router();
+
+// console.log(router.toString());
