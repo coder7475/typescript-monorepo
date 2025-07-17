@@ -13,7 +13,8 @@
     "build": "tsc -p tsconfig.json && tsup",
     "start": "node dist/server.js",
     "lint": "biome lint --fix",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@repo/db": "workspace:*",

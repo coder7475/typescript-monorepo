@@ -207,6 +207,15 @@ importers:
         specifier: ^5.2.2
         version: 5.8.3
 
+  packages/ds:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      typescript:
+        specifier: latest
+        version: 5.8.3
+
   packages/framework:
     devDependencies:
       '@repo/typescript-config':
