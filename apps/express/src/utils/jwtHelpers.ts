@@ -1,8 +1,9 @@
+import { env } from "@/configs/envConfig";
 import { JWT } from "@repo/utils";
 
 const jwtInstance = new JWT({
   access: {
-    secret: "access token from env",
+    secret: env.JWT_ACCESS_SECRET,
     expiresIn: "1d",
   },
   refresh: {
@@ -23,4 +24,12 @@ export function verifyToken<T = object>(
   type: "access" | "refresh" = "access",
 ): T {
   return jwtInstance.verifyToken<T>(token, type);
+}
+
+export function decodeToken<T = object>(token: string): T | null {
+  try {
+    return jwtInstance.decodeToken<T>(token);
+  } catch {
+    return null;
+  }
 }

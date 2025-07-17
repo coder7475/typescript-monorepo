@@ -35,6 +35,7 @@ const envSchema = z.object({
     .enum(["development", "production", "test"])
     .default("development"),
   DB_URI: z.string().url("DB_URI must be a valid URL"),
+  JWT_ACCESS_SECRET: z.string().default("secret"),
 });
 
 // Validate process.env and infer typed env object
