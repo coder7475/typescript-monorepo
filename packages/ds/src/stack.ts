@@ -37,3 +37,18 @@ export class ArrayStack {
     return this.top === this.maxSize - 1;
   }
 }
+
+// const stack = new ArrayStack(10);
+
+// stack.isEmpty();
+// stack.push(10);
+
+// console.log(stack.peek());
+
+// stack.push(20);
+// stack.push(30);
+// stack.push(40);
+// stack.push(50);
+// stack.pop();
+
+// console.log(stack);
