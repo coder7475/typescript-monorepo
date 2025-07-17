@@ -34,26 +34,3 @@ export class JWT {
     return jwt.decode(token) as T | null;
   }
 }
-
-// Example Usage
-// const jwtInstance = new JWT({
-//   access: {
-//     secret: "secret",
-//     expiresIn: "15m",
-//   },
-//   refresh: {
-//     secret: "secret",
-//     expiresIn: "7d",
-//   },
-// });
-
-// Signing
-// const token = jwtInstance.signToken({ userId: "abc123" });
-
-// console.log(token);
-// Verifying
-// const payload = jwtInstance.verifyToken(token);
-// console.log(payload);
-// Decoding (no verification)
-// const decoded = jwtInstance.decodeToken(token);
-// console.log(decoded);
