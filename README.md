@@ -16,11 +16,28 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `express`: another Express app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+This monorepo contains the following apps and packages:
+
+#### Apps
+
+- `docs`: a [Next.js](https://nextjs.org/) app for documentation
+- `express`: a robust Express.js application with user authentication and MongoDB integration
+- `node-framework`: a custom Node.js framework implementation
+
+#### Packages
+
+- `@repo/ui`: React component library shared across applications
+- `@repo/db`: Database utilities and MongoDB connector
+- `@repo/ds`: Data structures implementation (Queue, Stack, RadixTree)
+- `@repo/framework`: Custom Node.js framework core
+- `@repo/math`: Mathematical utilities
+- `@repo/utils`: Common utilities including JWT and password hashing
+
+#### Configs
+
+- `@repo/eslint-config`: ESLint configurations for Next.js and React
+- `@repo/prettier-config`: Prettier formatting configurations
+- `@repo/typescript-config`: TypeScript configurations for different project types
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -133,5 +150,3 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
 - [Configuration Options](https://turborepo.com/docs/reference/configuration)
 - [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
-
-# typescript-monorepo
