@@ -76,3 +76,16 @@ export function verifyPassword(password: string, storedHash: string): boolean {
     Buffer.from(originalHash, "hex"),
   );
 }
+
+/**
+ * Compare old password and new password.
+ * @param oldPassword - The old password (plaintext)
+ * @param newPassword - The new password (plaintext)
+ * @returns true if passwords are different, false if they are the same
+ */
+export function isPasswordChanged(
+  oldPassword: string,
+  newPassword: string,
+): boolean {
+  return oldPassword !== newPassword;
+}
