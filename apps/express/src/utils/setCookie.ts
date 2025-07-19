@@ -1,4 +1,5 @@
 import { env } from "@/configs/envConfig";
+import { parseExpiry } from "@repo/math";
 import { Response } from "express";
 
 interface AuthTokens {
@@ -17,7 +18,7 @@ export const setAuthCookie = (
       httpOnly: true,
       secure: !isDev,
       sameSite: isDev ? "lax" : "none",
-      maxAge: 15 * 60 * 1000, // 15 minutes
+      maxAge: parseExpiry("15m"), // 15 minutes - better taken from env
     });
   }
 
@@ -26,7 +27,7 @@ export const setAuthCookie = (
       httpOnly: true,
       secure: !isDev,
       sameSite: isDev ? "lax" : "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: parseExpiry("7d"), // 7 days - better taken from env
     });
   }
 };
