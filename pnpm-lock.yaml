@@ -63,6 +63,9 @@ importers:
       '@repo/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@repo/math':
+        specifier: 'workspace: *'
+        version: link:../../packages/math
       '@repo/utils':
         specifier: workspace:*
         version: link:../../packages/utils
