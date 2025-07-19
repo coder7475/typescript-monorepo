@@ -1,6 +1,6 @@
 import { env } from "@/configs/envConfig";
-import { IUser } from "@/modules/user/user.interface";
 import { JWT } from "@repo/utils";
+import { TokenType } from "@repo/utils/src/jwt/types";
 
 const jwtInstance = new JWT({
   access: {
@@ -8,21 +8,18 @@ const jwtInstance = new JWT({
     expiresIn: "1d",
   },
   refresh: {
-    secret: "refresh token from env",
+    secret: env.JWT_REFRESH_SECRET,
     expiresIn: "7d",
   },
 });
 
-export function generateToken(
-  payload: object,
-  type: "access" | "refresh" = "access",
-) {
+export function generateToken(payload: object, type: TokenType = "access") {
   return jwtInstance.signToken(payload, {}, type);
 }
 
 export function verifyToken<T = object>(
   token: string,
-  type: "access" | "refresh" = "access",
+  type: TokenType = "access",
 ): T {
   return jwtInstance.verifyToken<T>(token, type);
 }
@@ -33,13 +30,4 @@ export function decodeToken<T = object>(token: string): T | null {
   } catch {
     return null;
   }
-}
-
-export function createUserTokens(payload: Partial<IUser>) {
-  const accessToken = generateToken(payload, "access");
-  const refreshToken = generateToken(payload, "refresh");
-  return {
-    accessToken,
-    refreshToken,
-  };
 }
