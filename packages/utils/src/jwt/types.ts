@@ -8,3 +8,4 @@ export interface JWTConfig {
 }
 
 export type Payload = JwtPayload | string;
+export type CJwtPayload = JwtPayload;
