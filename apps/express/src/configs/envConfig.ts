@@ -46,7 +46,7 @@ if (!parsedEnv.success) {
   console.error(parsedEnv.error.format());
   process.exit(1);
 }
-
+// create type of env
 export type Env = z.infer<typeof envSchema>;
-
+// export the parsed env
 export const env: Env = parsedEnv.data;

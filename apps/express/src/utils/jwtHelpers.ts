@@ -1,4 +1,5 @@
 import { env } from "@/configs/envConfig";
+import { IUser } from "@/modules/user/user.interface";
 import { JWT } from "@repo/utils";
 
 const jwtInstance = new JWT({
@@ -32,4 +33,13 @@ export function decodeToken<T = object>(token: string): T | null {
   } catch {
     return null;
   }
+}
+
+export function createUserTokens(payload: Partial<IUser>) {
+  const accessToken = generateToken(payload, "access");
+  const refreshToken = generateToken(payload, "refresh");
+  return {
+    accessToken,
+    refreshToken,
+  };
 }
