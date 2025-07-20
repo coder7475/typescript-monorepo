@@ -8,6 +8,12 @@ export class TrieNode {
   handlers: Map<Method, Handler> = new Map();
 }
 
+type MatchResult = {
+  handler: Handler;
+  params: Record<string, string>;
+  originalPath: string;
+};
+
 export class Router {
   private root: TrieNode = new TrieNode();
 
@@ -29,6 +35,64 @@ export class Router {
     node.isEnd = true;
     node.method = method;
     node.handlers.set(method, handler);
+  }
+
+  match(method: Method, path: string): MatchResult | null {
+    const segments = path.split("/").filter(Boolean);
+    if (segments.length === 0) return null;
+
+    let node: TrieNode | null = this.root;
+    const params: Record<string, string> = {};
+
+    let i = 0;
+    let originalPath = "";
+
+    while (i < segments.length && node) {
+      const segment = segments[i];
+
+      // Try exact match
+      const nextNode = node.children.get(segment as string);
+      if (nextNode) {
+        node = nextNode;
+        originalPath += `/${node?.path}`;
+        i++;
+        continue;
+      } else {
+        node = null;
+      }
+      // dynamic match
+      let matched = false;
+      // Since node may be null, use the previous node for dynamic matching
+      const prevNode = node ?? this.root;
+      for (const [childPath, childNode] of prevNode.children) {
+        if (childPath.startsWith(":")) {
+          const paramName = childPath.slice(1) || segment;
+          params[paramName!] = segment ?? "";
+          node = childNode;
+          originalPath += `/${childNode.path}`;
+          i++;
+          matched = true;
+          break;
+        }
+      }
+
+      if (!matched) {
+        node = null;
+        break;
+      }
+
+      if (node?.isEnd && node.handlers.has(method)) {
+        const handler = node.handlers.get(method);
+        if (!handler) return null;
+        return {
+          handler,
+          params,
+          originalPath,
+        };
+      }
+    }
+
+    return null;
   }
 
   toString(): string {
