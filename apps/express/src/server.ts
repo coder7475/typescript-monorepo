@@ -1,6 +1,8 @@
 import type { Server } from "node:http";
-import app, { logger } from "@/app";
+import app from "@/app";
 import { env } from "@/configs/envConfig";
+
+import { logger } from "./utils/logger";
 
 const server: Server = app.listen(env.PORT, () => {
   logger.info(
