@@ -48,23 +48,20 @@ export class Router {
     let originalPath = "";
 
     while (i < segments.length && node) {
-      const segment = segments[i];
+      const segment = segments[i] as string;
 
       // Try exact match
-      const nextNode = node.children.get(segment as string);
+      const nextNode = node.children.get(segment);
       if (nextNode) {
         node = nextNode;
         originalPath += `/${node?.path}`;
         i++;
         continue;
-      } else {
-        node = null;
       }
       // dynamic match
       let matched = false;
       // Since node may be null, use the previous node for dynamic matching
-      const prevNode = node ?? this.root;
-      for (const [childPath, childNode] of prevNode.children) {
+      for (const [childPath, childNode] of node.children) {
         if (childPath.startsWith(":")) {
           const paramName = childPath.slice(1) || segment;
           params[paramName!] = segment ?? "";
@@ -80,16 +77,16 @@ export class Router {
         node = null;
         break;
       }
+    }
 
-      if (node?.isEnd && node.handlers.has(method)) {
-        const handler = node.handlers.get(method);
-        if (!handler) return null;
-        return {
-          handler,
-          params,
-          originalPath,
-        };
-      }
+    if (node?.isEnd && node.handlers.has(method)) {
+      const handler = node.handlers.get(method);
+      if (!handler) return null;
+      return {
+        handler,
+        params,
+        originalPath,
+      };
     }
 
     return null;
