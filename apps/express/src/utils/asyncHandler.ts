@@ -1,5 +1,6 @@
-import { logger } from "@/app";
 import type { NextFunction, Request, Response } from "express";
+
+import { logger } from "./logger";
 
 type AsyncHandler = (
   req: Request,
