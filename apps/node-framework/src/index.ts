@@ -23,4 +23,4 @@ router.add("GET", "/admin/dashboard", () => {});
 router.add("GET", "/products/:id", () => {});
 router.add("GET", "/products/:id/comments/:cid", () => {});
 console.log(router.toString());
-// continue from 2:44:0
+console.log(router.match("GET", "/home"));

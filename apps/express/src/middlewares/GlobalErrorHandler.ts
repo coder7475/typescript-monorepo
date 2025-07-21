@@ -12,7 +12,7 @@ import { NextFunction, Request, Response } from "express";
 
 const MONGO_DUPLICATE_KEY_ERROR = 11_000;
 
-export const globalErrorHandler = (
+const GlobalErrorHandler = (
   err: unknown,
   req: Request,
   res: Response,
@@ -83,3 +83,5 @@ export const globalErrorHandler = (
     }),
   });
 };
+
+export default GlobalErrorHandler;
