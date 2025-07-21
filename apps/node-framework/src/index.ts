@@ -22,5 +22,25 @@ router.add("POST", "/login", () => {});
 router.add("GET", "/admin/dashboard", () => {});
 router.add("GET", "/products/:id", () => {});
 router.add("GET", "/products/:id/comments/:cid", () => {});
+
+const startTime = performance.now();
 console.log(router.toString());
-console.log(router.match("GET", "/home"));
+const endTime = performance.now();
+console.log(`Time Taken: ${endTime - startTime}`);
+
+const routesToTest = [
+  { method: "GET", path: "/home" },
+  { method: "GET", path: "/admin/dashboard" },
+  { method: "GET", path: "/products/1243" },
+  { method: "GET", path: "/products/1243/comments/5632" },
+];
+
+for (const { method, path } of routesToTest) {
+  const start = performance.now();
+  // Cast method to the correct type if necessary
+  const result = router.match(method as any, path);
+  const end = performance.now();
+  console.log(`Route: [${method}] ${path}`);
+  console.log("Match Result:", result);
+  console.log(`Time Taken: ${end - start}ms\n`);
+}
