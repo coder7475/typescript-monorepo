@@ -18,6 +18,4 @@ import { Server } from "./server.js";
 // }
 
 export const createApp = () => new Server();
-export const router = new Router();
-
 // console.log(router.toString());

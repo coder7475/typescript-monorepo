@@ -19,7 +19,6 @@ export class Router {
 
   add(method: Method, path: string, handler: Handler): void {
     const segments = path.split("/").filter(Boolean);
-    if (segments.length === 0) return;
 
     let node = this.root;
 
@@ -39,7 +38,6 @@ export class Router {
 
   match(method: Method, path: string): MatchResult | null {
     const segments = path.split("/").filter(Boolean);
-    if (segments.length === 0) return null;
 
     let node: TrieNode | null = this.root;
     const params: Record<string, string> = {};
