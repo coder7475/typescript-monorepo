@@ -3,15 +3,17 @@ import { createServer, IncomingMessage, ServerResponse } from "node:http";
 
 import { RequestImp } from "./Request.js";
 import { ResponseImp } from "./Response.js";
+import { Router } from "./Router.js";
 
 // Event Driven Server
 export class Server extends EventEmitter {
   private server: ReturnType<typeof createServer>;
-
+  private router: Router;
   // constructor
   constructor() {
     super();
     this.server = createServer(this.handleRequest.bind(this));
+    this.router = new Router();
   }
 
   // methods
@@ -33,15 +35,22 @@ export class Server extends EventEmitter {
     await request.parseBody();
 
     // * Step 3: Match the Route
+    const matchedResult = this.router.match(request.method, request.path);
+
+    if (!matchedResult) {
+      response.status(404).json({
+        status: "error",
+        message: "Route Not found!",
+      });
+      return;
+    }
+
+    const { handler: finalHandler, originalPath, params } = matchedResult;
+    request.params = params;
+    request.originalPath = originalPath;
 
     // * Step 4: Execute the handler or Execute the middleware chain
-    const body = {
-      statusCode: 200,
-      message: "Message from our own response handler!",
-    };
-    // send response
-    response.status(200).json(body);
-    this.emit("request:processed");
+    finalHandler(request, response);
   }
 }
 
