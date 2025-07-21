@@ -9,14 +9,6 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./dist/index.js"
-    },
-    "./hashPassword": {
-      "types": "./src/hashPassword/index.ts",
-      "default": "./dist/hashPassword/index.js"
-    },
-    "./jwt": {
-      "types": "./src/jwt/index.ts",
-      "default": "./dist/jwt/index.js"
     }
   },
   "scripts": {
