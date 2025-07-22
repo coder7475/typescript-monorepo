@@ -1,9 +1,16 @@
 import { AbstractQueryBuilder, QueryParams } from "@repo/db";
 import { Query } from "mongoose";
 
+export interface Meta {
+  page: number; // Current page number
+  limit: number; // Items per page
+  totalCount: number; // Total number of matching documents/items
+  totalPages: number; // Total pages based on limit
+}
+
 export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
   private mongooseQuery: Query<T[], T>;
-
+  private _meta?: Meta;
   constructor(mongooseQuery: Query<T[], T>, queryParams: QueryParams) {
     super(queryParams);
     this.mongooseQuery = mongooseQuery;
@@ -52,18 +59,25 @@ export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
     return this;
   }
 
+  build() {
+    return this.mongooseQuery;
+  }
+
   async exec(): Promise<T[]> {
     return await this.mongooseQuery.exec();
   }
 
-  async getMeta() {
-    const count = await this.mongooseQuery.model.countDocuments(
-      this.queryParams.filter ?? {},
-    );
-    const page = this.queryParams.page ?? 1;
-    const limit = this.queryParams.limit ?? 10;
-    const totalPages = Math.ceil(count / limit);
-    return { page, limit, totalCount: count, totalPages };
+  async getMeta(): Promise<Meta> {
+    if (!this._meta) {
+      const count = await this.mongooseQuery.model.countDocuments(
+        this.queryParams.filter ?? {},
+      );
+      const page = this.queryParams.page ?? 1;
+      const limit = this.queryParams.limit ?? 10;
+      const totalPages = Math.ceil(count / limit);
+      return { page, limit, totalCount: count, totalPages };
+    }
+    return this._meta;
   }
 }
 
@@ -78,18 +92,23 @@ export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
 //   limit: 10,
 // };
 
-// For Mongoose
+// // For Mongoose
 // const mongooseQuery = Model.find();
 // const queryBuilder = new MongooseQueryBuilder(mongooseQuery, queryParams);
-// const results = await queryBuilder
+// const results = queryBuilder
 //   .filter()
 //   .search()
 //   .sort()
 //   .selectFields()
 //   .paginate()
-//   .exec();
-// const meta = await queryBuilder.getMeta();
-
+//   .build();
+// // const result = await results.exec();
+// // const meta = await queryBuilder.getMeta();
+// // OR
+// const [data, meta] = await Promise.all([
+//   results.exec(),
+//   queryBuilder.getMeta(),
+// ]);
 // For SQL ORM (e.g. Knex)
 // const sqlQuery = knex("products");
 // const queryBuilder = new SQLQueryBuilder(sqlQuery, queryParams);
