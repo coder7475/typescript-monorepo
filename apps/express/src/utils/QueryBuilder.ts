@@ -66,3 +66,31 @@ export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
     return { page, limit, totalCount: count, totalPages };
   }
 }
+
+// ? Example Usage
+// const queryParams = {
+//   filter: { status: "active" },
+//   searchTerm: "apple",
+//   searchableFields: ["name", "description"],
+//   sort: "createdAt desc",
+//   fields: ["name", "price"],
+//   page: 2,
+//   limit: 10,
+// };
+
+// // For Mongoose
+// const mongooseQuery = Model.find();
+// const queryBuilder = new MongooseQueryBuilder(mongooseQuery, queryParams);
+// const results = await queryBuilder
+//   .filter()
+//   .search()
+//   .sort()
+//   .selectFields()
+//   .paginate()
+//   .exec();
+// const meta = await queryBuilder.getMeta();
+
+// For SQL ORM (e.g. Knex)
+// const sqlQuery = knex("products");
+// const queryBuilder = new SQLQueryBuilder(sqlQuery, queryParams);
+// ...
