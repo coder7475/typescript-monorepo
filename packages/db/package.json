@@ -9,10 +9,6 @@
     ".": {
       "types": "./src/index.ts",
       "default": "./dist/index.js"
-    },
-    "./mongo": {
-      "types": "./src/mongo/mongoConnector.ts",
-      "default": "./dist/mongo/mongoConnector.js"
     }
   },
   "scripts": {
