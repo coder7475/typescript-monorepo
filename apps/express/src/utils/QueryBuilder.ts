@@ -78,7 +78,7 @@ export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
 //   limit: 10,
 // };
 
-// // For Mongoose
+// For Mongoose
 // const mongooseQuery = Model.find();
 // const queryBuilder = new MongooseQueryBuilder(mongooseQuery, queryParams);
 // const results = await queryBuilder
