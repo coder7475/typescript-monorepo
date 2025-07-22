@@ -7,6 +7,7 @@ app.get("/", (req, res) => {
     message: "Home Route",
   });
 });
+
 app.get("/about", (req, res) => {
   res.status(200).json({
     message: "About Route",
