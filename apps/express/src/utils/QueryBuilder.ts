@@ -75,7 +75,7 @@ export class MongooseQueryBuilder<T> extends AbstractQueryBuilder<T> {
       const page = this.queryParams.page ?? 1;
       const limit = this.queryParams.limit ?? 10;
       const totalPages = Math.ceil(count / limit);
-      return { page, limit, totalCount: count, totalPages };
+      this._meta = { page, limit, totalCount: count, totalPages };
     }
     return this._meta;
   }
