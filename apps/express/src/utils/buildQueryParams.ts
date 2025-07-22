@@ -1,7 +1,7 @@
 import { Request } from "express";
 
 interface QueryParams {
-  filter?: Record<string, any>;
+  filter?: Record<string, string | string[]>;
   searchTerm?: string;
   searchableFields?: string[]; // You can set this outside
   sort?: string;
