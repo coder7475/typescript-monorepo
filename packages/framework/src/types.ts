@@ -32,3 +32,13 @@ export interface Response {
 
 // contracts for handlers
 export type Handler = (req: Request, res: Response) => void | Promise<void>;
+
+export interface NextFunction {
+  (error?: Error): void;
+}
+
+export type Middleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => void | Promise<void>;
