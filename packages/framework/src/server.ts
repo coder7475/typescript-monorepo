@@ -42,6 +42,8 @@ export class Server extends EventEmitter {
     this.router.add("DELETE", path, handler);
   }
 
+  public use() {}
+
   private async handleRequest(
     nodeReq: IncomingMessage,
     nodeRes: ServerResponse<IncomingMessage>,

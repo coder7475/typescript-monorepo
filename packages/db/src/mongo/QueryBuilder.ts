@@ -1,5 +1,5 @@
-import { AbstractQueryBuilder, QueryParams } from "@repo/db";
 import { Query } from "mongoose";
+import { AbstractQueryBuilder, QueryParams } from "src/AbstractQueryBuilder.js";
 
 export interface Meta {
   page: number; // Current page number
