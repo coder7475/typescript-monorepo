@@ -32,7 +32,7 @@ export class LinkedList<T> {
       this.tail = newNode;
     }
   }
-
+  // console log the values
   print(): void {
     let current = this.head;
     const values: T[] = [];
@@ -43,6 +43,49 @@ export class LinkedList<T> {
     }
 
     console.log(values.join(" => "));
+  }
+
+  // create a array from llist
+  toArray(): T[] {
+    let current = this.head;
+    const values: T[] = [];
+
+    while (current) {
+      values.push(current.data);
+      current = current.next;
+    }
+
+    return values;
+  }
+
+  // check if list contains the element
+  find(element: T): boolean {
+    let current = this.head;
+    while (current) {
+      if (current.data === element) {
+        return true;
+      }
+      current = current.next;
+    }
+    return false;
+  }
+
+  // * ? utilities
+  // Check if list is empty
+  isEmpty(): boolean {
+    return this.size == 0;
+  }
+
+  // Get size of the list
+  length(): number {
+    return this.size;
+  }
+
+  // clear the list
+  clear() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
   }
 }
 
