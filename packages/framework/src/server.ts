@@ -1,20 +1,27 @@
 import EventEmitter from "node:events";
 import { createServer, IncomingMessage, ServerResponse } from "node:http";
 
+import { MiddlewareManager } from "./Middlewares.js";
 import { RequestImp } from "./Request.js";
 import { ResponseImp } from "./Response.js";
 import { Router } from "./Router.js";
-import { Handler } from "./types.js";
+import { Handler, Middleware } from "./types.js";
 
 // Event Driven Server
 export class Server extends EventEmitter {
   private server: ReturnType<typeof createServer>;
   private router: Router;
+  private middlewareManager: MiddlewareManager;
   // constructor
   constructor() {
     super();
     this.server = createServer(this.handleRequest.bind(this));
     this.router = new Router();
+    this.middlewareManager = new MiddlewareManager();
+  }
+  // use middlewares
+  use(pathOrMiddleware: string | Middleware, middleware?: Middleware) {
+    this.middlewareManager.use(pathOrMiddleware, middleware);
   }
 
   // methods
@@ -41,8 +48,6 @@ export class Server extends EventEmitter {
   public delete(path: string, handler: Handler) {
     this.router.add("DELETE", path, handler);
   }
-
-  public use() {}
 
   private async handleRequest(
     nodeReq: IncomingMessage,
