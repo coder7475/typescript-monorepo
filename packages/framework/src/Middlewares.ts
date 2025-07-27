@@ -28,7 +28,8 @@ export class MiddlewareManager {
   }
 
   async execute(req: Request, res: Response, finalHandler: Handler) {
-    const next = async (index = 0, error?: Error) => {
+    let index = 0;
+    const next = async (error?: Error) => {
       if (error) {
         res.status(500).send(error.message);
         return;
@@ -41,7 +42,7 @@ export class MiddlewareManager {
         return;
       }
 
-      const entry = this.middlewares[index];
+      const entry = this.middlewares[index++];
       if (!entry) {
         await next();
         return;
