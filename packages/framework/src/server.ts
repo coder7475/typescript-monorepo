@@ -63,20 +63,17 @@ export class Server extends EventEmitter {
     // * Step 3: Match the Route
     const matchedResult = this.router.match(request.method, request.path);
 
-    if (!matchedResult) {
-      response.status(404).json({
-        status: "error",
-        message: "Route Not found!",
-      });
-      return;
-    }
-
-    const { handler: finalHandler, originalPath, params } = matchedResult;
-    request.params = params;
-    request.originalPath = originalPath;
+    request.params = matchedResult?.params || {};
+    request.originalPath = matchedResult?.originalPath || "";
 
     // * Step 4: Execute the handler or Execute the middleware chain
-    finalHandler(request, response);
+    const finalHandler = matchedResult
+      ? matchedResult.handler
+      : () => {
+          response.status(404).send("Route not found!");
+        };
+
+    await this.middlewareManager.execute(request, response, finalHandler);
   }
 }
 
