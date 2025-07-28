@@ -29,23 +29,28 @@ export class Server extends EventEmitter {
     this.server.listen(port, cb);
   }
 
-  public get(path: string, handler: Handler) {
+  public get(path: string, handler: Handler, ...middlewares: Middleware[]) {
+    this.middlewareManager.registerRoutes(path, ...middlewares);
     this.router.add("GET", path, handler);
   }
 
-  public post(path: string, handler: Handler) {
+  public post(path: string, handler: Handler, ...middlewares: Middleware[]) {
+    this.middlewareManager.registerRoutes(path, ...middlewares);
     this.router.add("POST", path, handler);
   }
 
-  public put(path: string, handler: Handler) {
+  public put(path: string, handler: Handler, ...middlewares: Middleware[]) {
+    this.middlewareManager.registerRoutes(path, ...middlewares);
     this.router.add("PUT", path, handler);
   }
 
-  public patch(path: string, handler: Handler) {
+  public patch(path: string, handler: Handler, ...middlewares: Middleware[]) {
+    this.middlewareManager.registerRoutes(path, ...middlewares);
     this.router.add("PATCH", path, handler);
   }
 
-  public delete(path: string, handler: Handler) {
+  public delete(path: string, handler: Handler, ...middlewares: Middleware[]) {
+    this.middlewareManager.registerRoutes(path, ...middlewares);
     this.router.add("DELETE", path, handler);
   }
 
