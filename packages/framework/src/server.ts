@@ -29,28 +29,28 @@ export class Server extends EventEmitter {
     this.server.listen(port, cb);
   }
 
-  public get(path: string, handler: Handler, ...middlewares: Middleware[]) {
-    this.middlewareManager.registerRoutes(path, ...middlewares);
+  public get(path: string, middlewares: Middleware[], handler: Handler) {
+    this.middlewareManager.registerRoutes(path, middlewares);
     this.router.add("GET", path, handler);
   }
 
-  public post(path: string, handler: Handler, ...middlewares: Middleware[]) {
-    this.middlewareManager.registerRoutes(path, ...middlewares);
+  public post(path: string, middlewares: Middleware[], handler: Handler) {
+    this.middlewareManager.registerRoutes(path, middlewares);
     this.router.add("POST", path, handler);
   }
 
-  public put(path: string, handler: Handler, ...middlewares: Middleware[]) {
-    this.middlewareManager.registerRoutes(path, ...middlewares);
+  public put(path: string, middlewares: Middleware[], handler: Handler) {
+    this.middlewareManager.registerRoutes(path, middlewares);
     this.router.add("PUT", path, handler);
   }
 
-  public patch(path: string, handler: Handler, ...middlewares: Middleware[]) {
-    this.middlewareManager.registerRoutes(path, ...middlewares);
+  public patch(path: string, middlewares: Middleware[], handler: Handler) {
+    this.middlewareManager.registerRoutes(path, middlewares);
     this.router.add("PATCH", path, handler);
   }
 
-  public delete(path: string, handler: Handler, ...middlewares: Middleware[]) {
-    this.middlewareManager.registerRoutes(path, ...middlewares);
+  public delete(path: string, middlewares: Middleware[], handler: Handler) {
+    this.middlewareManager.registerRoutes(path, middlewares);
     this.router.add("DELETE", path, handler);
   }
 

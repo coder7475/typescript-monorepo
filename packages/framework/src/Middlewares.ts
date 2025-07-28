@@ -27,13 +27,12 @@ export class MiddlewareManager {
     this.middlewares.push({ middleware: pathOrMiddleware });
   }
 
-  registerRoutes(path: string, ...middlewares: Middleware[]) {
+  registerRoutes(path: string, middlewares: Middleware[]) {
     if (middlewares.length > 0) {
       middlewares.forEach((middleware) => {
         this.use(path, middleware);
-      })
+      });
     }
-
   }
 
   async execute(req: Request, res: Response, finalHandler: Handler) {

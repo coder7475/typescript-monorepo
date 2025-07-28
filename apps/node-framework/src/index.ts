@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
+app.get("/", [], (req, res) => {
   res.status(200).json({
     message: "Home Route",
   });
@@ -20,14 +20,16 @@ app.get("/", (req, res) => {
 
 app.get(
   "/about",
+  [
+    (req, res, next) => {
+      console.log("about middleware");
+      next();
+    },
+  ],
   (req, res) => {
     res.status(200).json({
       message: "About Route",
     });
-  },
-  (req, res, next) => {
-    console.log("about middleware");
-    next();
   },
 );
 // events
