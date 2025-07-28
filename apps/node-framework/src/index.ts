@@ -7,6 +7,16 @@ app.use((req, _res, next) => {
   next();
 });
 // 38:00
+//
+app.use((req, res, next) => {
+  console.log("Second Global Middleware");
+  next();
+})
+
+app.use('/about', (req, res, next) => {
+  console.log("about middleware");
+  next();
+})
 
 app.get("/", (req, res) => {
   res.status(200).json({
