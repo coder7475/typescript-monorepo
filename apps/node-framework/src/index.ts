@@ -2,11 +2,11 @@ import { createApp } from "@repo/framework";
 
 const app = createApp();
 
-
 app.use((req, _res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
-})
+});
+// 38:00
 
 app.get("/", (req, res) => {
   res.status(200).json({
