@@ -6,17 +6,11 @@ app.use((req, _res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
-// 38:00
-//
+
 app.use((req, res, next) => {
   console.log("Second Global Middleware");
   next();
-})
-
-app.use('/about', (req, res, next) => {
-  console.log("about middleware");
-  next();
-})
+});
 
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -24,11 +18,18 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/about", (req, res) => {
-  res.status(200).json({
-    message: "About Route",
-  });
-});
+app.get(
+  "/about",
+  (req, res) => {
+    res.status(200).json({
+      message: "About Route",
+    });
+  },
+  (req, res, next) => {
+    console.log("about middleware");
+    next();
+  },
+);
 // events
 // app.on("request:received", () => {
 //   console.log("Server Request Received!");
