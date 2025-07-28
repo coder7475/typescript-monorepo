@@ -16,7 +16,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "mongoose": "^8.16.3"
+    "mongoose": "^8.16.3",
+    "redis": "^5.6.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
