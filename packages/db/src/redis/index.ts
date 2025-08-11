@@ -1,6 +1,3 @@
-export * from "./RedisClient.js";
-export * from "./types.js";
-
 // Example Usage
 // import { RedisClient } from '@your-scope/redis';
 
