@@ -3,9 +3,10 @@
   "compilerOptions": {
     "outDir": "dist",
     "noEmit": false,
+    "esModuleInterop": true,
     "baseUrl": "./src",
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "es2022",
+    "module": "es2022",
     "moduleResolution": "Node",
     "importsNotUsedAsValues": "remove",
     "strict": true,

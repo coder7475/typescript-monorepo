@@ -5,3 +5,6 @@ export * from "./mongo/mongoConnector.js";
 
 // redis
 export * from "./redis/RedisClient.js";
+
+// drizzle
+export * from "./drizzle-neon/index.js";
