@@ -44,4 +44,52 @@ account = BankAccount("Fahad", 40000);
 # print(account.get_balance())
 # print(account.__balance)  # Error: AttributeError (private attribute)
 
+## Inheritance
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def start_engine(self):
+        return f"{self.brand} engine started"
+
+class Motorcycle(Vehicle):
+    def __init__(self, brand, has_sidecar):
+        super().__init__(brand)
+        self.has_sidecar = has_sidecar
+    
+    def display_info(self):
+        return f"{self.brand} Motorcycle, Sidecar: {self.has_sidecar}"
+
+# class Motorcycle(Vehicle):  # Inheriting from Vehicle
+#     def __init__(self, brand, has_sidecar):
+#         super().__init__(brand)  # Call parent class constructor
+#         self.has_sidecar = has_sidecar
+
+#     def display_info(self):
+#         return f"{self.brand} Motorcycle, Sidecar: {self.has_sidecar}"
+
+# Creating an object
+# bike = Motorcycle("Harley-Davidson", True)
+# print(bike.start_engine())  # Output: Harley-Davidson engine started
+# print(bike.display_info())  # Output: Harley-Davidson Motorcycle, Sidecar: True
+
+# Polymorphism
+class Dog:
+    def speak(self):
+        print("Woof!")
+
+class Cat:
+    def speak(self):
+        print("Meow!")
+
+# Polymorphic function
+def animal_sound(animal):
+    return animal.speak()
+
+dog = Dog()
+cat = Cat()
+
+animal_sound(dog) # Output: Woof
+animal_sound(cat) # Output: Meow
+
 
